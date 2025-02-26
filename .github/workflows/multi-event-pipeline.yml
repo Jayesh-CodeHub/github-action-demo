@@ -12,12 +12,14 @@ on:                                                     # defines events when th
 
 jobs:                                                   # jon section starts here
   on-push:                                              # job name
+    if: github.event_name == 'push'                     # runs only on event push
     runs-on: ubuntu-latest                              # specifies os for the job
     steps:                                              # steps section starts here
       - name: "Running on master/test push"             # Step name  (step1)
         run: echo "Running on master/test push"         # Action (Shell command)
 
   on-pull-request:                                      # job name
+    if: github.event_name == 'pull_request'             # runs only on event pull_request
     runs-on: ubuntu-latest                              # specifies os for the job
     steps:
       - name: "running on pull request"                 # step name (step2)
